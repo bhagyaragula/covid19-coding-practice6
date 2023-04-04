@@ -69,7 +69,7 @@ app.get("/states/:stateId/", async (request, response) => {
     FROM 
      state
     WHERE 
-     state_id: ${stateId};`;
+     state_id = ${stateId};`;
   const states = await db.get(getStateQuery);
   response.send(convertStateDBObjectToResponseObject(states));
 });
