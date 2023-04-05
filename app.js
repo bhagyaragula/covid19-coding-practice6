@@ -65,7 +65,7 @@ app.get("/states/:stateId/", async (request, response) => {
   const { stateId } = request.params;
   const getStateQuery = `
     SELECT 
-     stateName 
+     * 
     FROM 
      state
     WHERE 
@@ -92,7 +92,7 @@ app.post("/districts/", async (request, response) => {
   const { stateId, districtName, cases, cured, active, deaths } = request.body;
   const postDistrictQuery = `
     INSERT INTO
-     district ( stateId, districtName, cases, cured, active, deaths )
+     district ( state_id, district_name, cases, cured, active, deaths )
     VALUES 
      (${stateId}, '${districtName}', ${cases}, ${cured}, ${active}, ${deaths});`;
 
